@@ -1,0 +1,79 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyNwAYCiQULatSta0Llr0XIP",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/yamini1438/Codsoft-/blob/main/classification_task4\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "xMwLBfn38FD9",
+        "outputId": "2b5cac1b-517d-416e-eb27-b2eef2e46a1b"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Accuracy: 1.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "from sklearn.datasets import load_iris\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.neighbors import KNeighborsClassifier\n",
+        "from sklearn.metrics import accuracy_score\n",
+        "\n",
+        "# Load Dataset\n",
+        "iris = load_iris()\n",
+        "\n",
+        "X = iris.data\n",
+        "y = iris.target\n",
+        "\n",
+        "# Split Data\n",
+        "X_train, X_test, y_train, y_test = train_test_split(\n",
+        "    X, y, test_size=0.2, random_state=42\n",
+        ")\n",
+        "\n",
+        "# Model\n",
+        "model = KNeighborsClassifier()\n",
+        "\n",
+        "# Train\n",
+        "model.fit(X_train, y_train)\n",
+        "\n",
+        "# Predict\n",
+        "predictions = model.predict(X_test)\n",
+        "\n",
+        "# Accuracy\n",
+        "print(\"Accuracy:\", accuracy_score(y_test, predictions))"
+      ]
+    }
+  ]
+}
